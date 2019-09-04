@@ -3,6 +3,9 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap"
+    rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display&display=swap" rel="stylesheet">
     <title>Check Yo'Self</title>
   </head>
   <body>
@@ -13,10 +16,8 @@
         SELF
       </h1>
       <div class="nav__search--container">
-        <button type="nav__search--button">
-          <img src="images/search.svg" alt="Magnifying glass icon">
-        </button>
-        <input class="nav__search--input" type="search">
+        <input type="image" src="images/search.svg" class="search-icon">
+        <input class="nav__search--input" type="search" placeholder="   Search">
       </div>
     </header>
     <main>
@@ -29,31 +30,33 @@
             </section>
             <div class="left__taskinput--container">
               <label>Task Item</label>
+              <div class="left__item--wrapper">
               <input class="js__item--input" type="text">
-              <button class="js__plus--button">
-                +
-              </button>
+              <button class="js__plus--button">+</button>
+              </div>
             </div>
           </div>
         </form>
           <div class="js__button--container">
-            <button class="js__list--button">
+            <button class="js__list--button asidebtn">
               Make Task List
             </button>
-            <button class="js__clear--button">
+            <button class="js__clear--button asidebtn">
               Clear All
             </button>
           </div>
           <div class="left__horizontal--line">
           </div>
           <div class="js__filterbutton--container">
-            <button class="js__filter--button" type="button" name="button">
+            <button class="js__filter--button asidebtn" type="button" name="button">
               Filter by Urgency
             </button>
           </div>
       </section>
-    </main>
+      <section class="right__main--section">
 
+      </section>
+    </main>
   </body>
   <script type="text/javascript" src="tasks.js"></script>
   <script type="text/javascript" src="todo-list.js"></script>
