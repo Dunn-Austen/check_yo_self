@@ -1,0 +1,12 @@
+.js__dynamic--insert {
+  color: white;
+  background-color: #587A8A;
+  width: 80%;
+
+}
+
+.js__delete--icon {
+  display: inline-block;
+  height: 8px;
+  width: auto;
+}
