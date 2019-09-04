@@ -5,6 +5,7 @@ var jsItemInput = document.querySelector(".js__item--input");
 var jsPlusButton = document.querySelector(".js__plus--button");
 var jsCardArea = document.querySelector(".js__card--area");
 var jsListButton = document.querySelector(".js__list--button");
+var jsInputArea = document.querySelector(".js__input--area");
 
 // Event Listener for left section, initiates insertTaskItem function upon click
 sectionLeft.addEventListener('click', eventHandlerTopLeft);
@@ -29,11 +30,10 @@ function insertLeftTaskItem() {
     if (taskItemValue != "") {
       document.querySelector(".js__input--area").appendChild(newItemLeftSection);
       newItemLeftSection.classList.add("js__dynamic--insert");
-      newItemLeftSection.innerHTML =
-      `
-      <img class="js__delete--icon" src="images/delete.svg" alt="Delete Icon for removing task item">
-        <span>${taskItemValue}</span>
-      `
+      newItemLeftSection.insertAdjacentHTML('afterbegin',
+      `<img class="js__delete--icon" src="images/delete.svg" alt="Delete Icon for removing task item">
+      <li>${taskItemValue}</li>
+      `)
     }
 }
 
