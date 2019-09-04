@@ -19,6 +19,7 @@ function eventHandlerTopLeft() {
   if (event.target.classList.contains("js__delete--icon")) {
     deleteLeftTaskItem();
   }
+  document.getElementById('itemInput').value = '';
 }
 
 // Function for dynamic generation of user Task Item values via new <p> element
@@ -62,3 +63,16 @@ function makeTaskCard() {
       </section>
      </container>`);
 }
+
+
+var clearBtn = document.querySelector('.js__clear--button');
+var deleteArray = document.querySelectorAll('.js__dynamic--insert');
+
+function clear() {
+  document.querySelector('.left__main--form').reset();
+  var deleteArray = document.querySelectorAll('.js__dynamic--insert');
+  deleteArray.forEach()
+}
+
+
+clearBtn.addEventListener('click', clear);
