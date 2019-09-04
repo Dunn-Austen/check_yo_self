@@ -24,7 +24,7 @@ function insertLeftTaskItem() {
       newItemLeftSection.classList.add("js__dynamic--insert");
       newItemLeftSection.innerHTML =
       `
-      <img class="js__delete--icon" src="images/search.svg" alt="Delete Icon for removing task item">
+      <img class="js__delete--icon" src="images/dark-delete.svg" alt="Delete Icon for removing task item">
         <span>${taskItemValue}</span>
       `
     }
