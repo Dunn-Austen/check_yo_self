@@ -1,3 +1,4 @@
+
 /* Color Palette
 header/button navy blue = #1e1e3d
 white font = #ffffff
@@ -189,4 +190,18 @@ input {
 .right__main--section {
   width: 75%;
   background-color: #F2F6F7;
+}
+
+/* Styling for top left dynamic elements - needs to be refined */
+.js__dynamic--insert {
+  color: white;
+  background-color: #587A8A;
+  width: 80%;
+
+}
+
+.js__delete--icon {
+  display: inline-block;
+  height: 8px;
+  width: auto;
 }
