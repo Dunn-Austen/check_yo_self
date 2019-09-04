@@ -16,10 +16,20 @@ font-family: 'Open-Sans', sans-serif;
 
 body {
 margin: 0 auto;
+display: grid;
+height: 100vh;
+grid-template-areas:
+"nav nav nav"
+"task main main"
+"task main main";
+grid-template-columns: 1fr 1fr 1fr;
+grid-template-rows: 10% 45% 45%;
+border: 2px dotted green;
 }
 
 header {
-  width: 100%;
+  display: grid;
+  grid-area: nav;
   background-color: #1e1e3d;
   display: flex;
   flex-direction: row;
@@ -30,7 +40,6 @@ h1 {
   color: #ffffff;
   font-weight: bolder;
   font-size: 50px;
-  margin: 20px;
 }
 
 span {
@@ -97,8 +106,8 @@ input {
 /* Left Section */
 
 .left__main--section {
-  width: 25%;
-  height: 900px;
+  display: grid;
+  grid-area: task;
   background-color: #597a8a
 }
 
@@ -184,11 +193,11 @@ input {
   background-color: #f04923;
 }
 
-
 /* Right Main Section */
 
 .right__main--section {
-  width: 75%;
+  display: grid;
+  grid-area: main;
   background-color: #F2F6F7;
 }
 
