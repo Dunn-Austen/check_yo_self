@@ -1,0 +1,42 @@
+/* Color Palette
+header/button navy blue = #1e1e3d
+white font = #ffffff
+
+
+
+*/
+
+/* Elements */
+
+* {
+font-family: 'Open-Sans', sans-serif;
+}
+
+body {
+
+}
+
+header {
+  width: 100%;
+  background-color: #1e1e3d;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+h1 {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 30px;
+  margin: 20px;
+}
+
+span {
+  color: #ffc308;
+}
+
+/* Header */
+
+.nav__search--container {
+  float: right;
+}
