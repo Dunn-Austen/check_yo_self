@@ -45,7 +45,6 @@ label {
 }
 
 form {
-  /* margin: 20px; */
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -109,17 +108,14 @@ input {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* align-items: center; */
   width: 100%;
   margin: 10px;
-  /* border: 5px solid black; */
   margin-top: 30px;
 }
 
 .left__taskinput--container {
-border: 2px solid red;
-width: 100%;
-align-items: baseline;
+  width: 100%;
+  align-items: baseline;
 }
 
 .js__item--input {
