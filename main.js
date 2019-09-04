@@ -1,8 +1,14 @@
 // Global Variables
 var sectionLeft = document.querySelector(".left__main--section");
+var jsTitleInput = document.querySelector(".js__title--input");
+var jsItemInput = document.querySelector(".js__item--input");
+var jsPlusButton = document.querySelector(".js__plus--button");
+var jsCardArea = document.querySelector(".js__card--area");
+var jsListButton = document.querySelector(".js__list--button");
 
 // EventListeners
 sectionLeft.addEventListener('click', eventHandlerTopLeft);
+jsListButton.addEventListener('click', makeTaskCard);
 
 // Functions
 // Named function for left section eventListener
@@ -45,6 +51,7 @@ function deleteLeftTaskItem() {
   removeTaskItem.remove();
   }
 
+
 // Function for generating User Prompts (inspiring quotes) / Replaced upon btn click
 function insertRandomQuote() {
   var grabQuotationArea = document.querySelector('#js__quotation--area')
@@ -66,3 +73,23 @@ function insertRandomQuote() {
 };
 
 insertRandomQuote();
+
+function makeTaskCard() {
+  console.log('make task card!')
+    jsCardArea.insertAdjacentHTML('afterbegin',
+    `<container class="js__card--container">
+      <section class="js__task--card">
+        <h3 class="js__h3--card">${jsTitleInput.value}</h3>
+        <div class="task__body--container">
+          <div class="task__container">
+            <img class="js__task--urgent icons" src="images/checkbox.svg" alt="Checkbox for completed tasks">
+            <section class="task__item">${jsItemInput.value}</section>
+          </div>
+        </div>
+          <div class="task__card--icon">
+            <img class="js__task--urgent icon" src="images/urgent.svg" alt="Update urgency on card">
+            <img class="js__task--delete icon" src="images/delete.svg" alt="Delete card">
+          </div>
+      </section>
+     </container>`);
+}
