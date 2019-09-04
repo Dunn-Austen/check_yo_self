@@ -13,11 +13,46 @@
         SELF
       </h1>
       <div class="nav__search--container">
-        <button type="button">
-          <img src="/images/" alt="Magnifying glass ">
+        <button type="nav__search--button">
+          <img src="images/search.svg" alt="Magnifying glass icon">
         </button>
+        <input class="nav__search--input" type="search">
       </div>
     </header>
+    <main>
+      <section class="left__main--section">
+        <form class="left__main--form">
+          <div class="left__input--container">
+            <label>Task Title</label>
+            <input class="js__title--input" type="text">
+            <section class="js__input--area">
+            </section>
+            <div class="left__taskinput--container">
+              <label>Task Item</label>
+              <input class="js__item--input" type="text">
+              <button class="js__plus--button">
+                +
+              </button>
+            </div>
+          </div>
+        </form>
+          <div class="js__button--container">
+            <button class="js__list--button">
+              Make Task List
+            </button>
+            <button class="js__clear--button">
+              Clear All
+            </button>
+          </div>
+          <div class="left__horizontal--line">
+          </div>
+          <div class="js__filterbutton--container">
+            <button class="js__filter--button" type="button" name="button">
+              Filter by Urgency
+            </button>
+          </div>
+      </section>
+    </main>
 
   </body>
   <script type="text/javascript" src="tasks.js"></script>
