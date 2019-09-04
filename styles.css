@@ -111,6 +111,22 @@ input {
   background-color: #597a8a
 }
 
+/* Styling for top left dynamic elements*/
+
+.js__dynamic--insert {
+  color: #ffffff;
+  display: inline-block;
+  font-size: 35px;
+  margin-left: 20px;
+  width: 80%;
+}
+
+.js__delete--icon {
+  display: inline-block;
+  height: 35px;
+  margin-right: 8px;
+  width: auto;
+}
 
 /* form - div- inputs */
 
@@ -199,18 +215,4 @@ input {
   display: grid;
   grid-area: main;
   background-color: #F2F6F7;
-}
-
-/* Styling for top left dynamic elements - needs to be refined */
-.js__dynamic--insert {
-  color: white;
-  background-color: #587A8A;
-  width: 80%;
-
-}
-
-.js__delete--icon {
-  display: inline-block;
-  height: 8px;
-  width: auto;
 }
