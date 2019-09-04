@@ -13,6 +13,7 @@ function eventHandlerTopLeft() {
   if (event.target.classList.contains("js__delete--icon")) {
     deleteLeftTaskItem();
   }
+  document.getElementById('itemInput').value = '';
 }
 
 // Function for dynamic generation of user Task Item values via new <p> element
@@ -36,3 +37,77 @@ function deleteLeftTaskItem() {
   var removeTaskItem = document.querySelector('.js__dynamic--insert');
   removeTaskItem.remove();
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Clear Button Functionality
+var clearBtn = document.querySelector('.js__clear--button');
+// var titleInput = document.getElementById('itemTitle');
+// var itemInput = document.getElementById('itemInput');
+var deleteArray = document.querySelectorAll('.js__dynamic--insert');
+
+function clear() {
+  document.querySelector('.left__main--form').reset();
+  var deleteArray = document.querySelectorAll('.js__dynamic--insert');
+  deleteArray.forEach()
+}
+
+
+clearBtn.addEventListener('click', clear);
