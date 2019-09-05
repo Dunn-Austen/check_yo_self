@@ -21,6 +21,7 @@ function eventHandlerTopLeft() {
   }
   if (event.target.classList.contains("js__delete--icon")) {
     deleteLeftTaskItem();
+    disableClearBtn();
   }
   document.getElementById('itemInput').value = '';
   disableItemBtn();
