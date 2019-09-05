@@ -5,16 +5,28 @@ var jsItemInput = document.querySelector(".js__item--input");
 var jsPlusButton = document.querySelector(".js__plus--button");
 var jsCardArea = document.querySelector(".js__card--area");
 var jsListButton = document.querySelector(".js__list--button");
-var jsInputArea = document.querySelector(".js__input--area");
+var jstaskArea = document.querySelector(".js__task--area");
+var clearBtn = document.querySelector('.js__clear--button');
+var deleteArray = document.querySelectorAll('.js__dynamic--insert');
+var taskContainer = document.querySelector('.task__container');
+var tasksArray = [];
+var taskItemText = `
+        <img class="js__task--urgent icons" src="images/checkbox.svg" alt="Checkbox for completed tasks">
+        <il class="task__item">${jsItemInput.value}</il>
+
+        `
+      
 
 // Event Listener for left section, initiates insertTaskItem function upon click
 sectionLeft.addEventListener('click', eventHandlerTopLeft);
 jsListButton.addEventListener('click', makeTaskCard);
+clearBtn.addEventListener('click', clear);
 
 // Named function for eventListener
-function eventHandlerTopLeft() {
+function eventHandlerTopLeft(event) {
   event.preventDefault();
   if (event.target.classList.contains("js__plus--button")) {
+
     insertLeftTaskItem();
   }
   if (event.target.classList.contains("js__delete--icon")) {
@@ -26,13 +38,13 @@ function eventHandlerTopLeft() {
 // Function for dynamic generation of user Task Item values via new <p> element
 function insertLeftTaskItem() {
   var taskItemValue = document.querySelector(".js__item--input").value;
-  var newItemLeftSection = document.createElement("p");
+  // var newItemLeftSection = document.createElement("ul");
     if (taskItemValue != "") {
-      document.querySelector(".js__input--area").appendChild(newItemLeftSection);
-      newItemLeftSection.classList.add("js__dynamic--insert");
-      newItemLeftSection.insertAdjacentHTML('afterbegin',
+      // document.querySelector(".js__task--area").appendChild(jstasktArea);
+      // newItemLeftSection.classList.add("js__dynamic--insert");
+      jstaskArea.insertAdjacentHTML('afterbegin',
       `<img class="js__delete--icon" src="images/delete.svg" alt="Delete Icon for removing task item">
-      <li>${taskItemValue}</li>
+       <li>${taskItemValue}</li>
       `)
     }
 }
@@ -44,8 +56,21 @@ function deleteLeftTaskItem() {
   removeTaskItem.remove();
   }
 
+  // Function to put tasks on card
+var allTaskItems = document.querySelectorAll('p.js__dynamic--insert')
+
+  function insertTasks() {
+    console.log(jstaskArea.children.length);
+    for (var i = 0; i < jstaskArea.children.length; i++) {
+    var taskList = new Task({id: Date.now(), name: jstaskArea.children[i].innerText});
+    tasksArray.push(jstaskArea.children[i].innerText);
+    console.log(tasksArray);
+  }
+};
+
 function makeTaskCard() {
-  console.log('make task card!')
+  insertTasks();
+  console.log(tasksArray)
     jsCardArea.insertAdjacentHTML('afterbegin',
     `<container class="js__card--container">
       <section class="js__task--card">
@@ -53,7 +78,11 @@ function makeTaskCard() {
         <div class="task__body--container">
           <div class="task__container">
             <img class="js__task--urgent icons" src="images/checkbox.svg" alt="Checkbox for completed tasks">
-            <section class="task__item">${jsItemInput.value}</section>
+            <ul class="task__item">
+              <li class="task__list">${tasksArray[0]}</li>
+              <li class="task__list">${tasksArray[1]}</li>
+              <li class="task__list">${tasksArray[2]}</li>
+            </ul>
           </div>
         </div>
           <div class="task__card--icon">
@@ -64,19 +93,11 @@ function makeTaskCard() {
      </container>`);
 }
 
-
-var clearBtn = document.querySelector('.js__clear--button');
-var deleteArray = document.querySelectorAll('.js__dynamic--insert');
-
 function clear() {
   document.querySelector('.left__main--form').reset();
   var deleteArray = document.querySelectorAll('.js__dynamic--insert');
   deleteArray.forEach()
 }
-
-
-clearBtn.addEventListener('click', clear);
-
 
 function disableBtn() {
   if (document.querySelector('#itemInput').value.length != 0) {
