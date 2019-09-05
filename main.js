@@ -66,12 +66,10 @@ function makeTaskCard() {
 
 
 var clearBtn = document.querySelector('.js__clear--button');
-var deleteArray = document.querySelectorAll('.js__dynamic--insert');
 
 function clear() {
   document.querySelector('.left__main--form').reset();
-  var deleteArray = document.querySelectorAll('.js__dynamic--insert');
-  deleteArray.forEach()
+  document.querySelector('.js__input--area').innerHTML = '';
 }
 
 
@@ -97,5 +95,5 @@ function disableMakeListBtn() {
 }
 
 function disableClearBtn() {
-  
+
 }
