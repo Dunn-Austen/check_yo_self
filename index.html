@@ -24,23 +24,25 @@
         <form class="left__main--form">
           <div class="left__input--container">
             <label>Task Title</label>
-            <input class="js__title--input" type="text">
-            <section class="js__input--area">
-            </section>
+            <input class="js__title--input" type="text" id="itemTitle" autocomplete="off"
+            onkeyup="return disableBtns()">
+            <ul class="js__input--area">
+            </ul>
             <div class="left__taskinput--container">
               <label>Task Item</label>
               <div class="left__item--wrapper">
-              <input class="js__item--input" type="text">
-              <button class="js__plus--button">+</button>
+              <input class="js__item--input" type="text" id="itemInput" autocomplete="off"
+              onkeyup="return disableBtns()">
+              <button class="js__plus--button" disabled="disabled">+</button>
               </div>
             </div>
           </div>
         </form>
           <div class="js__button--container">
-            <button class="js__list--button asidebtn">
+            <button class="js__list--button asidebtn" disabled="disabled">
               Make Task List
             </button>
-            <button class="js__clear--button asidebtn">
+            <button class="js__clear--button asidebtn" disabled="disabled">
               Clear All
             </button>
           </div>

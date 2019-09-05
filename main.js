@@ -5,10 +5,13 @@ var jsItemInput = document.querySelector(".js__item--input");
 var jsPlusButton = document.querySelector(".js__plus--button");
 var jsCardArea = document.querySelector(".js__card--area");
 var jsListButton = document.querySelector(".js__list--button");
+var jsInputArea = document.querySelector(".js__input--area");
+var clearBtn = document.querySelector('.js__clear--button');
 
 // EventListeners
 sectionLeft.addEventListener('click', eventHandlerTopLeft);
 jsListButton.addEventListener('click', makeTaskCard);
+clearBtn.addEventListener('click', clear);
 
 // Functions
 // Named function for left section eventListener
@@ -19,7 +22,10 @@ function eventHandlerTopLeft() {
   }
   if (event.target.classList.contains("js__delete--icon")) {
     deleteLeftTaskItem();
+    disableClearBtn();
   }
+  document.getElementById('itemInput').value = '';
+  disableItemBtn();
 }
 
 // Function for hiding left section text upon click (To be replaced with dynamic content)
@@ -34,11 +40,10 @@ function insertLeftTaskItem() {
     if (taskItemValue != "") {
       document.querySelector(".js__input--area").appendChild(newItemLeftSection);
       newItemLeftSection.classList.add("js__dynamic--insert");
-      newItemLeftSection.innerHTML =
-      `
-      <img class="js__delete--icon" src="images/dark-delete.svg" alt="Delete Icon for removing task item">
-        <span>${taskItemValue}</span>
-      `
+      newItemLeftSection.insertAdjacentHTML('afterbegin',
+      `<img class="js__delete--icon" src="images/delete.svg" alt="Delete Icon for removing task item">
+      <li>${taskItemValue}</li>
+      `)
     }
 }
 
@@ -108,4 +113,45 @@ function makeTaskCard() {
      hideQuotation();
      clearTaskFields();
      hideAllLeftTaskItems();
+}
+
+function clear() {
+  document.querySelector('.left__main--form').reset();
+  document.querySelector('.js__input--area').innerHTML = '';
+  disableBtns();
+}
+
+function disableItemBtn() {
+  if (document.querySelector('#itemInput').value.length != 0) {
+    document.querySelector('.js__plus--button').disabled = false;
+  } else if (document.querySelector('#itemInput').value.length == 0) {
+    document.querySelector('.js__plus--button').disabled = true;
+  } else return
+};
+
+function disableMakeListBtn() {
+  if (document.querySelector('#itemInput').value.length != 0 &&
+    document.querySelector('#itemTitle').value.length != 0) {
+    document.querySelector('.js__list--button').disabled = false;
+  } else if (document.querySelector('#itemInput').value.length == 0 &&
+    document.querySelector('#itemTitle').value.length == 0) {
+    document.querySelector('.js__list--button').disabled = true;
+  } else return
+}
+
+function disableClearBtn() {
+  if(document.querySelector('#itemInput').value.length != 0 ||
+    document.querySelector('#itemTitle').value.length != 0) {
+    clearBtn.disabled = false;
+  } else if(document.querySelector('#itemTitle').value.length == 0 &&
+    document.querySelector('#itemInput').value.length == 0) {
+    clearBtn.disabled = true;
+  } else return;
+
+};
+
+function disableBtns() {
+  disableMakeListBtn();
+  disableClearBtn();
+  disableItemBtn()
 }
