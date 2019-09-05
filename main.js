@@ -22,9 +22,8 @@ function eventHandlerTopLeft() {
   }
 }
 
-// // Function for Hiding left section text upon click (To be replaced with dynamic content)
+// Function for Hiding left section text upon click (To be replaced with dynamic content)
 function hideQuotation() {
-  document.getElementById("js__welcome--message").style.display = "none";
   document.getElementById('js__quotation--area').style.display = "none";
 }
 
@@ -51,7 +50,6 @@ function deleteLeftTaskItem() {
   removeTaskItem.remove();
   }
 
-
 // Function for generating User Prompts (inspiring quotes) / Replaced upon btn click
 function insertRandomQuote() {
   var grabQuotationArea = document.querySelector('#js__quotation--area')
@@ -72,8 +70,12 @@ function insertRandomQuote() {
   event.preventDefault();
 };
 
+// Alright guys, I chose this place in the code to invoke this function randomly.
+// We want the function to run and show a random inspiring quote upon page load.
+// Maybe I should locate it elsewhere?
 insertRandomQuote();
 
+// Function for generating to-do list cards, includes function to hide quotation
 function makeTaskCard() {
   console.log('make task card!')
     jsCardArea.insertAdjacentHTML('afterbegin',
@@ -92,4 +94,5 @@ function makeTaskCard() {
           </div>
       </section>
      </container>`);
+     hideQuotation();
 }

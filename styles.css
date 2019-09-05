@@ -46,7 +46,6 @@ span {
   color: #ffc308;
 }
 
-
 label {
   font-family: 'Open-Sans', sans-serif;
   font-size: 15px;
@@ -103,7 +102,6 @@ input {
   height: 40px;
   font-size: 15px;
 }
-
 
 /* Left Section */
 
@@ -220,19 +218,25 @@ input {
   padding: 3%;
 }
 
-
 /* Styling for top left dynamic elements - needs to be refined */
+
 .js__dynamic--insert {
   color: white;
   background-color: #587A8A;
+  font-size: 35px;
   width: 80%;
-
 }
 
 .js__delete--icon {
   display: inline-block;
-  height: 8px;
+  height: 35px;
   width: auto;
+}
+
+/* Styling for Inspirational quotations */
+
+#js__quotation--area {
+  font-size: 35px;
 }
 
 #js__card--container {
