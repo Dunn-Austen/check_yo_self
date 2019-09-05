@@ -24,14 +24,14 @@
         <form class="left__main--form">
           <div class="left__input--container">
             <label>Task Title</label>
-            <input class="js__title--input" type="text" id="itemTitle">
+            <input class="js__title--input" type="text" id="itemTitle" autocomplete="off">
             <section class="js__input--area">
             </section>
             <div class="left__taskinput--container">
               <label>Task Item</label>
               <div class="left__item--wrapper">
-              <input class="js__item--input" type="text" id="itemInput">
-              <button class="js__plus--button">+</button>
+              <input class="js__item--input" type="text" id="itemInput" autocomplete="off" onkeyup="return disableBtn()">
+              <button class="js__plus--button" disabled="disabled">+</button>
               </div>
             </div>
           </div>
