@@ -22,7 +22,7 @@ function eventHandlerTopLeft() {
   }
 }
 
-// Function for Hiding left section text upon click (To be replaced with dynamic content)
+// Function for hiding left section text upon click (To be replaced with dynamic content)
 function hideQuotation() {
   document.getElementById('js__quotation--area').style.display = "none";
 }
@@ -32,7 +32,6 @@ function insertLeftTaskItem() {
   var taskItemValue = document.querySelector(".js__item--input").value;
   var newItemLeftSection = document.createElement("p");
     if (taskItemValue != "") {
-      hideQuotation();
       document.querySelector(".js__input--area").appendChild(newItemLeftSection);
       newItemLeftSection.classList.add("js__dynamic--insert");
       newItemLeftSection.innerHTML =
@@ -43,12 +42,25 @@ function insertLeftTaskItem() {
     }
 }
 
-// Function for deleting dynamically generated Task Item from left section
+// Function for resetting Make Task List fields to empty upon generating card
+function clearTaskFields() {
+    var selectForm = document.querySelector(".left__main--form")
+    selectForm.reset();
+}
+
+// Function for individually deleting dynamically generated Task Item from left section (per icon click)
 function deleteLeftTaskItem() {
-  var deleteIcon = document.querySelector('.delete-button');
   var removeTaskItem = document.querySelector('.js__dynamic--insert');
   removeTaskItem.remove();
   }
+
+// Function for automatically hiding ALL dynamically generated Tasks Items at once - Tied to Make List Button
+function hideAllLeftTaskItems() {
+  var allTaskItems = document.querySelectorAll('p.js__dynamic--insert');
+  for (var i = 0; i < allTaskItems.length; i++) {
+    allTaskItems[i].style.display = 'none';
+  }
+}
 
 // Function for generating User Prompts (inspiring quotes) / Replaced upon btn click
 function insertRandomQuote() {
@@ -67,7 +79,6 @@ function insertRandomQuote() {
   ];
   i = Math.floor(Math.random() * 10)
   grabQuotationArea.innerHTML = inspiringQuotesArray[i];
-  event.preventDefault();
 };
 
 // Alright guys, I chose this place in the code to invoke this function randomly.
@@ -95,4 +106,6 @@ function makeTaskCard() {
       </section>
      </container>`);
      hideQuotation();
+     clearTaskFields();
+     hideAllLeftTaskItems();
 }
