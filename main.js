@@ -76,3 +76,26 @@ function clear() {
 
 
 clearBtn.addEventListener('click', clear);
+
+
+function disableBtn() {
+  if (document.querySelector('#itemInput').value.length != 0) {
+    document.querySelector('.js__plus--button').disabled = false;
+  } else if (document.querySelector('#itemInput').value.length == 0) {
+    document.querySelector('.js__plus--button').disabled = true;
+  } else return
+};
+
+function disableMakeListBtn() {
+  if (document.querySelector('#itemInput').value.length != 0 &&
+    document.querySelector('#itemTitle').value.length != 0) {
+    document.querySelector('.js__list--button').disabled = false;
+  } else if (document.querySelector('#itemInput').value.length == 0 &&
+    document.querySelector('#itemTitle').value.length == 0) {
+    document.querySelector('.js__list--button').disabled = true;
+  } else return
+}
+
+function disableClearBtn() {
+  
+}
