@@ -220,7 +220,8 @@ input {
   color: white;
   background-color: #587A8A;
   width: 80%;
-
+  display: flex;
+  align-items: center;
 }
 
 .js__delete--icon {
@@ -233,6 +234,12 @@ input {
 /*  width: 300px;
   height: 175px;
   border: 2px dotted red;*/
+}
+
+li {
+  color: #ffffff;
+  list-style-type: none;
+
 }
 
 .js__task--card {
@@ -289,6 +296,11 @@ input {
   padding: 0 3%;
 }
 
+.js__delete--icon {
+  width: 25px;
+  height: 25px;
+}
+
 .task__container {
   width: 100%;
   height: 35px;
@@ -298,3 +310,11 @@ input {
 .js__h3--card {
   padding-left: 3%;
 }
+<<<<<<< HEAD
+=======
+
+
+
+
+
+>>>>>>> 11c0dceacdb7d25a115ddce57c3d7a9843b4a99c
