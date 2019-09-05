@@ -146,6 +146,11 @@ input {
   color: #bac8d0;
 }
 
+.js__clear--button:disabled {
+  background-color: #2a2a35;
+  color: #bac8d0;
+}
+
 .left__item--wrapper {
   display: flex;
   flex-direction: row;
@@ -269,7 +274,6 @@ li {
 .js__task--delete {
   width: 25px;
   height: 25px;
-/*  padding: 0 3%;*/
 }
 
 .task__container {
@@ -310,11 +314,3 @@ li {
 .js__h3--card {
   padding-left: 3%;
 }
-<<<<<<< HEAD
-=======
-
-
-
-
-
->>>>>>> 11c0dceacdb7d25a115ddce57c3d7a9843b4a99c

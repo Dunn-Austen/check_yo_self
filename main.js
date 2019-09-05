@@ -6,10 +6,12 @@ var jsPlusButton = document.querySelector(".js__plus--button");
 var jsCardArea = document.querySelector(".js__card--area");
 var jsListButton = document.querySelector(".js__list--button");
 var jsInputArea = document.querySelector(".js__input--area");
+var clearBtn = document.querySelector('.js__clear--button');
 
 // Event Listener for left section, initiates insertTaskItem function upon click
 sectionLeft.addEventListener('click', eventHandlerTopLeft);
 jsListButton.addEventListener('click', makeTaskCard);
+clearBtn.addEventListener('click', clear);
 
 // Named function for eventListener
 function eventHandlerTopLeft() {
@@ -19,8 +21,10 @@ function eventHandlerTopLeft() {
   }
   if (event.target.classList.contains("js__delete--icon")) {
     deleteLeftTaskItem();
+    disableClearBtn();
   }
   document.getElementById('itemInput').value = '';
+  disableItemBtn();
 }
 
 // Function for dynamic generation of user Task Item values via new <p> element
@@ -64,21 +68,13 @@ function makeTaskCard() {
      </container>`);
 }
 
-
-var clearBtn = document.querySelector('.js__clear--button');
-var deleteArray = document.querySelectorAll('.js__dynamic--insert');
-
 function clear() {
   document.querySelector('.left__main--form').reset();
-  var deleteArray = document.querySelectorAll('.js__dynamic--insert');
-  deleteArray.forEach()
+  document.querySelector('.js__input--area').innerHTML = '';
+  disableBtns();
 }
 
-
-clearBtn.addEventListener('click', clear);
-
-
-function disableBtn() {
+function disableItemBtn() {
   if (document.querySelector('#itemInput').value.length != 0) {
     document.querySelector('.js__plus--button').disabled = false;
   } else if (document.querySelector('#itemInput').value.length == 0) {
@@ -97,5 +93,18 @@ function disableMakeListBtn() {
 }
 
 function disableClearBtn() {
-  
+  if(document.querySelector('#itemInput').value.length != 0 ||
+    document.querySelector('#itemTitle').value.length != 0) {
+    clearBtn.disabled = false;
+  } else if(document.querySelector('#itemTitle').value.length == 0 &&
+    document.querySelector('#itemInput').value.length == 0) {
+    clearBtn.disabled = true;
+  } else return;
+
+};
+
+function disableBtns() {
+  disableMakeListBtn();
+  disableClearBtn();
+  disableItemBtn()
 }
