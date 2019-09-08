@@ -20,25 +20,24 @@
         <input class="nav__search--input" type="search" placeholder="   Search">
       </div>
     </header>
-    <main>
       <section class="left__main--section">
         <form class="left__main--form">
           <div class="left__input--container">
             <label>Task Title</label>
-            <input class="js__title--input" type="text">
-            <section class="js__input--area">
-            </section>
+            <input class="js__title--input" type="text" id="itemTitle" autocomplete="off" onkeydown="return disableMakeListBtn()">
+            <ul class="js__task--area">
+            </ul>
             <div class="left__taskinput--container">
               <label>Task Item</label>
               <div class="left__item--wrapper">
-              <input class="js__item--input" type="text">
-              <button class="js__plus--button">+</button>
+              <input class="js__item--input" type="text" id="itemInput" autocomplete="off" onkeyup="return disableBtn()" onkeydown="return disableMakeListBtn()">
+              <button class="js__plus--button" disabled="disabled">+</button>
               </div>
             </div>
           </div>
         </form>
           <div class="js__button--container">
-            <button class="js__list--button asidebtn">
+            <button class="js__list--button asidebtn" disabled="disabled">
               Make Task List
             </button>
             <button class="js__clear--button asidebtn">
@@ -55,8 +54,26 @@
       </section>
       <section class="right__main--section">
 
+        <section class="js__card--area">
+
+<!--           <section class="js__task--card">
+            <h3 class="js__h3--card">${jsTitleInput.value}</h3>
+            <div class="task__body--container">
+              <div class="task__container">
+              <section class="task__item">
+
+            </section.>
+          </div>
+        </div>
+          <div class="task__card--icon">
+            <img class="js__task--urgent icon" src="images/urgent.svg" alt="Update urgency on card">
+            <img class="js__task--delete icon" src="images/delete.svg" alt="Delete card">
+          </div>
+        </section> -->
+
       </section>
-    </main>
+
+      </section>
   </body>
   <script type="text/javascript" src="tasks.js"></script>
   <script type="text/javascript" src="todo-list.js"></script>
