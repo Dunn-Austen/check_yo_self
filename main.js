@@ -9,24 +9,19 @@ var jstaskArea = document.querySelector(".js__task--area");
 var clearBtn = document.querySelector('.js__clear--button');
 var deleteArray = document.querySelectorAll('.js__dynamic--insert');
 var taskContainer = document.querySelector('.task__container');
+var taskItemContainer = document.querySelector('.task__item--container');
 var tasksArray = [];
-var taskItemText = `
-        <img class="js__task--urgent icons" src="images/checkbox.svg" alt="Checkbox for completed tasks">
-        <il class="task__item">${jsItemInput.value}</il>
-
-        `
-      
+var todoListArray = [];
 
 // Event Listener for left section, initiates insertTaskItem function upon click
 sectionLeft.addEventListener('click', eventHandlerTopLeft);
-jsListButton.addEventListener('click', makeTaskCard);
+jsListButton.addEventListener('click', finalFunction);
 clearBtn.addEventListener('click', clear);
 
 // Named function for eventListener
 function eventHandlerTopLeft(event) {
   event.preventDefault();
   if (event.target.classList.contains("js__plus--button")) {
-
     insertLeftTaskItem();
   }
   if (event.target.classList.contains("js__delete--icon")) {
@@ -43,8 +38,10 @@ function insertLeftTaskItem() {
       // document.querySelector(".js__task--area").appendChild(jstasktArea);
       // newItemLeftSection.classList.add("js__dynamic--insert");
       jstaskArea.insertAdjacentHTML('afterbegin',
-      `<img class="js__delete--icon" src="images/delete.svg" alt="Delete Icon for removing task item">
-       <li>${taskItemValue}</li>
+      `<div class="left__task--container">
+         <img class="js__delete--icon" src="images/delete.svg" alt="Delete Icon for removing task item">
+         <p>${taskItemValue}</p>
+       </div>
       `)
     }
 }
@@ -57,31 +54,37 @@ function deleteLeftTaskItem() {
   }
 
   // Function to put tasks on card
-var allTaskItems = document.querySelectorAll('p.js__dynamic--insert')
 
-  function insertTasks() {
-    console.log(jstaskArea.children.length);
-    for (var i = 0; i < jstaskArea.children.length; i++) {
-    var taskList = new Task({id: Date.now(), name: jstaskArea.children[i].innerText});
-    tasksArray.push(jstaskArea.children[i].innerText);
-    console.log(tasksArray);
-  }
+function  newTodoList() {
+  var title = jsTitleInput.value;
+  var task = tasksArray;
+  var todoList = new TodoList({
+    id: Date.now(),
+    title: title,
+    taskList: task
+  })
+  todoListArray.push(todoList);
+console.log(todoList);
+  return todoList;
 };
 
-function makeTaskCard() {
-  insertTasks();
-  console.log(tasksArray)
+  function createTasks() {
+    for (var i = 0; i < jstaskArea.children.length; i++) {
+    var taskList = new Task({name: jstaskArea.children[i].innerText, id: Date.now()});
+    tasksArray.push(taskList);
+  }
+    return tasksArray;
+};
+
+function makeTaskCard(checklist) {
+  console.log(checklist.id);
     jsCardArea.insertAdjacentHTML('afterbegin',
-    `<container class="js__card--container">
+    `<container class="js__card--container" id="task__list--${checklist.id}">
       <section class="js__task--card">
-        <h3 class="js__h3--card">${jsTitleInput.value}</h3>
+        <h3 class="task__h3--text"></h3>
         <div class="task__body--container">
           <div class="task__container">
-            <img class="js__task--urgent icons" src="images/checkbox.svg" alt="Checkbox for completed tasks">
             <ul class="task__item">
-              <li class="task__list">${tasksArray[0]}</li>
-              <li class="task__list">${tasksArray[1]}</li>
-              <li class="task__list">${tasksArray[2]}</li>
             </ul>
           </div>
         </div>
@@ -91,6 +94,34 @@ function makeTaskCard() {
           </div>
       </section>
      </container>`);
+insertTasks(checklist);
+insertTitle(checklist);
+}
+
+function finalFunction(event) {
+  event.preventDefault();
+  var tasks = createTasks();
+  var checkList = newTodoList(tasks);
+  makeTaskCard(checkList);
+}
+
+function insertTasks(checklist) {
+  checklist.taskList.forEach(function(item) {
+  console.log(item);
+  var taskCard = document.querySelector(`#task__list--${checklist.id}`);
+  var taskListElement = taskCard.querySelector('.task__item');
+  var listItem = document.createElement('li');
+  for (var i = 0; i < 1; i++) {
+    listItem.innerHTML = `<img class="js__task--urgent icons" src="images/checkbox.svg" alt="Checkbox for completed tasks">${item.task}`;
+    taskListElement.appendChild(listItem);
+    }
+  })
+}
+
+  function insertTitle(checklist) {
+   var taskCard = document.querySelector(`#task__list--${checklist.id}`);
+   var sectionTextElement = taskCard.querySelector('.task__h3--text');
+   sectionTextElement.innerHTML = `${checklist.title}`;
 }
 
 function clear() {

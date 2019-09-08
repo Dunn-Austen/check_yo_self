@@ -1,6 +1,7 @@
 class Task {
 	constructor(tasks){
-		this.name = tasks.name;
-		this.id = tasks.id
+		this.task = tasks.name;
+		this.id = tasks.id;
+    // this.name = tasks.name;
 	}
 }
