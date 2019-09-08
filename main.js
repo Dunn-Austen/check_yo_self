@@ -5,24 +5,17 @@ var jsItemInput = document.querySelector(".js__item--input");
 var jsPlusButton = document.querySelector(".js__plus--button");
 var jsCardArea = document.querySelector(".js__card--area");
 var jsListButton = document.querySelector(".js__list--button");
-var jstaskArea = document.querySelector(".js__task--area");
-var clearBtn = document.querySelector('.js__clear--button');
-var deleteArray = document.querySelectorAll('.js__dynamic--insert');
-var taskContainer = document.querySelector('.task__container');
-var taskItemContainer = document.querySelector('.task__item--container');
-var tasksArray = [];
-var todoListArray = [];
 var jsInputArea = document.querySelector(".js__input--area");
 var clearBtn = document.querySelector('.js__clear--button');
 
 // EventListeners
 sectionLeft.addEventListener('click', eventHandlerTopLeft);
-
-jsListButton.addEventListener('click', finalFunction);
+jsListButton.addEventListener('click', makeTaskCard);
 clearBtn.addEventListener('click', clear);
 
-// Named function for eventListener
-function eventHandlerTopLeft(event) {
+// Functions
+// Named function for left section eventListener
+function eventHandlerTopLeft() {
   event.preventDefault();
   if (event.target.classList.contains("js__plus--button")) {
     insertLeftTaskItem();
@@ -43,15 +36,13 @@ function hideQuotation() {
 // Function for dynamic generation of user Task Item values via new <p> element
 function insertLeftTaskItem() {
   var taskItemValue = document.querySelector(".js__item--input").value;
-  // var newItemLeftSection = document.createElement("ul");
+  var newItemLeftSection = document.createElement("p");
     if (taskItemValue != "") {
-      // document.querySelector(".js__task--area").appendChild(jstasktArea);
-      // newItemLeftSection.classList.add("js__dynamic--insert");
-      jstaskArea.insertAdjacentHTML('afterbegin',
-      `<div class="left__task--container">
-         <img class="js__delete--icon" src="images/delete.svg" alt="Delete Icon for removing task item">
-         <p>${taskItemValue}</p>
-       </div>
+      document.querySelector(".js__input--area").appendChild(newItemLeftSection);
+      newItemLeftSection.classList.add("js__dynamic--insert");
+      newItemLeftSection.insertAdjacentHTML('afterbegin',
+      `<img class="js__delete--icon" src="images/delete.svg" alt="Delete Icon for removing task item">
+      <li>${taskItemValue}</li>
       `)
     }
 }
@@ -67,29 +58,6 @@ function deleteLeftTaskItem() {
   var removeTaskItem = document.querySelector('.js__dynamic--insert');
   removeTaskItem.remove();
   }
-
-  // Function to put tasks on card
-
-function  newTodoList() {
-  var title = jsTitleInput.value;
-  var task = tasksArray;
-  var todoList = new TodoList({
-    id: Date.now(),
-    title: title,
-    taskList: task
-  })
-  todoListArray.push(todoList);
-console.log(todoList);
-  return todoList;
-};
-
-  function createTasks() {
-    for (var i = 0; i < jstaskArea.children.length; i++) {
-    var taskList = new Task({name: jstaskArea.children[i].innerText, id: Date.now()});
-    tasksArray.push(taskList);
-  }
-    return tasksArray;
-};
 
 // Function for automatically hiding ALL dynamically generated Tasks Items at once - Tied to Make List Button
 function hideAllLeftTaskItems() {
@@ -117,19 +85,23 @@ function insertRandomQuote() {
   i = Math.floor(Math.random() * 10)
   grabQuotationArea.innerHTML = inspiringQuotesArray[i];
 };
+
+// Alright guys, I chose this place in the code to invoke this function randomly.
+// We want the function to run and show a random inspiring quote upon page load.
+// Maybe I should locate it elsewhere?
 insertRandomQuote();
 
 // Function for generating to-do list cards, includes function to hide quotation
 function makeTaskCard() {
   console.log('make task card!')
     jsCardArea.insertAdjacentHTML('afterbegin',
-    `<container class="js__card--container" id="task__list--${checklist.id}">
+    `<container class="js__card--container">
       <section class="js__task--card">
-        <h3 class="task__h3--text"></h3>
+        <h3 class="js__h3--card">${jsTitleInput.value}</h3>
         <div class="task__body--container">
           <div class="task__container">
-            <ul class="task__item">
-            </ul>
+            <img class="js__task--urgent icons" src="images/checkbox.svg" alt="Checkbox for completed tasks">
+            <section class="task__item">${jsItemInput.value}</section>
           </div>
         </div>
           <div class="task__card--icon">
@@ -138,38 +110,9 @@ function makeTaskCard() {
           </div>
       </section>
      </container>`);
-insertTasks(checklist);
-insertTitle(checklist);
-hideQuotation();
-clearTaskFields();
-// hideAllLeftTaskItems();
-}
-
-function finalFunction(event) {
-  event.preventDefault();
-  var tasks = createTasks();
-  var checkList = newTodoList(tasks);
-  makeTaskCard(checkList);
-}
-
-function insertTasks(checklist) {
-  checklist.taskList.forEach(function(item) {
-  console.log(item);
-  var taskCard = document.querySelector(`#task__list--${checklist.id}`);
-  var taskListElement = taskCard.querySelector('.task__item');
-  var listItem = document.createElement('li');
-  for (var i = 0; i < 1; i++) {
-    listItem.innerHTML = `<img class="js__task--urgent icons" src="images/checkbox.svg" alt="Checkbox for completed tasks">${item.task}`;
-    taskListElement.appendChild(listItem);
-    }
-  })
-}
-
-  function insertTitle(checklist) {
-   var taskCard = document.querySelector(`#task__list--${checklist.id}`);
-   var sectionTextElement = taskCard.querySelector('.task__h3--text');
-   sectionTextElement.innerHTML = `${checklist.title}`;
-}
+     hideQuotation();
+     clearTaskFields();
+     hideAllLeftTaskItems();
 }
 
 function clear() {
@@ -178,7 +121,7 @@ function clear() {
   disableBtns();
 }
 
-function disableBtn() {
+function disableItemBtn() {
   if (document.querySelector('#itemInput').value.length != 0) {
     document.querySelector('.js__plus--button').disabled = false;
   } else if (document.querySelector('#itemInput').value.length == 0) {
