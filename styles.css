@@ -4,12 +4,6 @@ header/button navy blue = #1e1e3d
 white font = #ffffff
 right section white = #F2F6F7;
 
-
-
-*/
-
-/* Elements */
-
 * {
 font-family: 'Open-Sans', sans-serif;
 }
@@ -45,7 +39,6 @@ h1 {
 span {
   color: #ffc308;
 }
-
 
 label {
   font-family: 'Open-Sans', sans-serif;
@@ -104,7 +97,6 @@ input {
   font-size: 15px;
 }
 
-
 /* Left Section */
 
 .left__main--section {
@@ -113,6 +105,22 @@ input {
   background-color: #597a8a
 }
 
+/* Styling for top left dynamic elements*/
+
+.js__dynamic--insert {
+  color: #ffffff;
+  display: inline-block;
+  font-size: 35px;
+  margin-left: 20px;
+  width: 80%;
+}
+
+.js__delete--icon {
+  display: inline-block;
+  height: 35px;
+  margin-right: 8px;
+  width: auto;
+}
 
 /* form - div- inputs */
 
@@ -142,6 +150,11 @@ input {
 
 /* Can refactor here with duplicate disabled button styles -JM */
 .js__list--button:disabled {
+  background-color: #2a2a35;
+  color: #bac8d0;
+}
+
+.js__clear--button:disabled {
   background-color: #2a2a35;
   color: #bac8d0;
 }
@@ -217,9 +230,11 @@ input {
 }
 
 /* Styling for top left dynamic elements - needs to be refined */
+
 .js__dynamic--insert {
   color: white;
   background-color: #587A8A;
+  font-size: 35px;
   width: 80%;
   display: flex;
   align-items: center;
@@ -227,14 +242,21 @@ input {
 
 .js__delete--icon {
   display: inline-block;
-  height: 8px;
+  height: 35px;
   width: auto;
 }
 
+/* Styling for Inspirational quotations */
+
+#js__quotation--area {
+  font-size: 35px;
+  font-style: italic;
+}
+
 #js__card--container {
-/*  width: 300px;
+ /* width: 300px;
   height: 175px;
-  border: 2px dotted red;*/
+  border: 2px dotted red; */
 }
 
 li {
@@ -253,7 +275,6 @@ li {
     padding: 20px;
     box-sizing: border-box;
     min-width: 350px;
-/*    min-height: 350px;*/
 }
 
 .task__body--container {
@@ -270,13 +291,11 @@ li {
   flex-direction: row;
   align-items: flex-end;
   justify-content: space-between;
-  align-content: f;
 }
 
 .js__task--delete {
   width: 25px;
   height: 25px;
-/*  padding: 0 3%;*/
 }
 
 .task__container {
@@ -359,21 +378,3 @@ li {
   column-gap: 1em;
   height: 100%;
 }
-
-/*.parent-box {
-  column-count: 3;
-  column-gap: 1em;
-  border: 1px solid red;
-}
-
-#blocks {
-  display: inline-block;
-  padding: 20px;
-  margin: 0 0 15px;
-  width: auto;
-  box-sizing: border-box;
-  background: lightgrey;
-}*/
-
-
-

@@ -12,9 +12,12 @@ var taskContainer = document.querySelector('.task__container');
 var taskItemContainer = document.querySelector('.task__item--container');
 var tasksArray = [];
 var todoListArray = [];
+var jsInputArea = document.querySelector(".js__input--area");
+var clearBtn = document.querySelector('.js__clear--button');
 
-// Event Listener for left section, initiates insertTaskItem function upon click
+// EventListeners
 sectionLeft.addEventListener('click', eventHandlerTopLeft);
+
 jsListButton.addEventListener('click', finalFunction);
 clearBtn.addEventListener('click', clear);
 
@@ -26,8 +29,15 @@ function eventHandlerTopLeft(event) {
   }
   if (event.target.classList.contains("js__delete--icon")) {
     deleteLeftTaskItem();
+    disableClearBtn();
   }
   document.getElementById('itemInput').value = '';
+  disableItemBtn();
+}
+
+// Function for hiding left section text upon click (To be replaced with dynamic content)
+function hideQuotation() {
+  document.getElementById('js__quotation--area').style.display = "none";
 }
 
 // Function for dynamic generation of user Task Item values via new <p> element
@@ -46,9 +56,14 @@ function insertLeftTaskItem() {
     }
 }
 
-// Function for deleting dynamically generated Task Item from left section
+// Function for resetting Make Task List fields to empty upon generating card
+function clearTaskFields() {
+    var selectForm = document.querySelector(".left__main--form")
+    selectForm.reset();
+}
+
+// Function for individually deleting dynamically generated Task Item from left section (per icon click)
 function deleteLeftTaskItem() {
-  var deleteIcon = document.querySelector('.delete-button');
   var removeTaskItem = document.querySelector('.js__dynamic--insert');
   removeTaskItem.remove();
   }
@@ -76,8 +91,37 @@ console.log(todoList);
     return tasksArray;
 };
 
-function makeTaskCard(checklist) {
-  console.log(checklist.id);
+// Function for automatically hiding ALL dynamically generated Tasks Items at once - Tied to Make List Button
+function hideAllLeftTaskItems() {
+  var allTaskItems = document.querySelectorAll('p.js__dynamic--insert');
+  for (var i = 0; i < allTaskItems.length; i++) {
+    allTaskItems[i].style.display = 'none';
+  }
+}
+
+// Function for generating User Prompts (inspiring quotes) / Replaced upon btn click
+function insertRandomQuote() {
+  var grabQuotationArea = document.querySelector('#js__quotation--area')
+  var inspiringQuotesArray = [
+    "Push yourself, because no one else is going to do it for you.",
+    "Sometimes later becomes never. Do it now.",
+    "Great things never come from comfort zones.",
+    "Dream it. Wish it. Do it.",
+    "Success doesn’t just find you. You have to go out and get it.",
+    "The harder you work for something, the greater you’ll feel when you achieve it.",
+    "Dream bigger. Do bigger.",
+    "Don’t stop when you’re tired. Stop when you’re done.",
+    "Wake up with determination. Go to bed with satisfaction.",
+    "Do something today that your future self will thank you for.",
+  ];
+  i = Math.floor(Math.random() * 10)
+  grabQuotationArea.innerHTML = inspiringQuotesArray[i];
+};
+insertRandomQuote();
+
+// Function for generating to-do list cards, includes function to hide quotation
+function makeTaskCard() {
+  console.log('make task card!')
     jsCardArea.insertAdjacentHTML('afterbegin',
     `<container class="js__card--container" id="task__list--${checklist.id}">
       <section class="js__task--card">
@@ -96,6 +140,9 @@ function makeTaskCard(checklist) {
      </container>`);
 insertTasks(checklist);
 insertTitle(checklist);
+hideQuotation();
+clearTaskFields();
+// hideAllLeftTaskItems();
 }
 
 function finalFunction(event) {
@@ -123,11 +170,12 @@ function insertTasks(checklist) {
    var sectionTextElement = taskCard.querySelector('.task__h3--text');
    sectionTextElement.innerHTML = `${checklist.title}`;
 }
+}
 
 function clear() {
   document.querySelector('.left__main--form').reset();
-  var deleteArray = document.querySelectorAll('.js__dynamic--insert');
-  deleteArray.forEach()
+  document.querySelector('.js__input--area').innerHTML = '';
+  disableBtns();
 }
 
 function disableBtn() {
@@ -149,5 +197,18 @@ function disableMakeListBtn() {
 }
 
 function disableClearBtn() {
-  
+  if(document.querySelector('#itemInput').value.length != 0 ||
+    document.querySelector('#itemTitle').value.length != 0) {
+    clearBtn.disabled = false;
+  } else if(document.querySelector('#itemTitle').value.length == 0 &&
+    document.querySelector('#itemInput').value.length == 0) {
+    clearBtn.disabled = true;
+  } else return;
+
+};
+
+function disableBtns() {
+  disableMakeListBtn();
+  disableClearBtn();
+  disableItemBtn()
 }
