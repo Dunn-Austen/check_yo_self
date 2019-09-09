@@ -45,7 +45,7 @@ function insertLeftTaskItem() {
 // Function for deleting dynamically generated Task Item from left section
 function deleteLeftTaskItem() {
   var deleteIcon = document.querySelector('.delete-button');
-  var removeTaskItem = document.querySelector('.js__dynamic--insert');
+  var removeTaskItem = document.querySelector('.left__task--container');
   removeTaskItem.remove();
   }
   // Function to put tasks on card
@@ -88,6 +88,7 @@ function makeTaskCard(checklist) {
      </container>`);
 insertTasks(checklist);
 insertTitle(checklist);
+hideLeftDynamics();
 }
 function finalFunction(event) {
   event.preventDefault();
@@ -114,14 +115,14 @@ function insertTasks(checklist) {
 }
 function clear() {
   document.querySelector('.left__main--form').reset();
-  var deleteArray = document.querySelectorAll('.js__dynamic--insert');
-  deleteArray.forEach()
+  jstaskArea.innerHTML = '';
+  disableBtns();
 }
-function disableBtn() {
+function disableItemBtn() {
   if (document.querySelector('#itemInput').value.length != 0) {
-    document.querySelector('.js__plus--button').disabled = false;
+    jsPlusButton.disabled = false;
   } else if (document.querySelector('#itemInput').value.length == 0) {
-    document.querySelector('.js__plus--button').disabled = true;
+    jsPlusButton.disabled = true;
   } else return
 };
 function disableMakeListBtn() {
@@ -134,5 +135,41 @@ function disableMakeListBtn() {
   } else return
 }
 function disableClearBtn() {
+  if(document.querySelector('#itemInput').value.length != 0 ||
+    document.querySelector('#itemTitle').value.length != 0) {
+    clearBtn.disabled = false;
+  } else if(document.querySelector('#itemTitle').value.length == 0 &&
+    document.querySelector('#itemInput').value.length == 0 || document.querySelector('#itemTitle').value.length == 0) {
+    clearBtn.disabled = true;
+  } else return;
+};
 
+// Invoked by HTML onkey event
+function disableBtns() {
+  disableMakeListBtn();
+  disableClearBtn();
+  disableItemBtn();
 }
+
+function hideLeftDynamics() {
+  jstaskArea.innerHTML = "";
+}
+
+// Function needs to be invoked on page load. Verified to work. Lacks styling, however. Could not figure out how to hide the quotation
+function insertRandomQuotation() {
+  var inspiringQuotesArray = [
+    "Push yourself, because no one else is going to do it for you.",
+    "Sometimes later becomes never. Do it now.",
+    "Great things never come from comfort zones.",
+    "Dream it. Wish it. Do it.",
+    "Success doesn’t just find you. You have to go out and get it.",
+    "The harder you work for something, the greater you’ll feel when you achieve it.",
+    "Dream bigger. Do bigger.",
+    "Don’t stop when you’re tired. Stop when you’re done.",
+    "Wake up with determination. Go to bed with satisfaction.",
+    "Do something today that your future self will thank you for.",
+  ];
+  i = Math.floor(Math.random() * 10)
+  jsCardArea.innerHTML = inspiringQuotesArray[i];
+};
+insertRandomQuotation();
