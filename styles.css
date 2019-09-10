@@ -369,3 +369,8 @@ li {
   color: #3C6577 !important;
 
 }
+
+
+.js__task--card-urgent {
+    background-color: #ffe79d !important
+}

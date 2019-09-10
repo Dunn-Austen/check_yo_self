@@ -214,3 +214,14 @@ function runUpdateToDo(event){
   console.log(todoListArray)
     todoListArray[0].updateTask(event);
   }
+
+
+
+
+jsCardArea.addEventListener('click', runUpdateToDo);
+
+// Stylings / toggle condition in the class method
+
+
+
+asdfsdf
