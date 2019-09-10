@@ -17,6 +17,7 @@ var todoListArray = [];
 sectionLeft.addEventListener('click', eventHandlerTopLeft);
 jsListButton.addEventListener('click', finalFunction);
 jsCardArea.addEventListener('click', deleteCard);
+jsCardArea.addEventListener('click', runUpdateToDo)
 clearBtn.addEventListener('click', clear);
 // Named function for eventListener
 
@@ -114,6 +115,7 @@ function insertTasks(checklist) {
   var taskCard = document.querySelector(`#task__list--${checklist.id}`);
   var taskListElement = taskCard.querySelector('.task__item');
   var listItem = document.createElement('li');
+  // listItem.setAttribute("id", "${item.id}")
   for (var i = 0; i < 1; i++) {
     listItem.innerHTML = `<img class="js__task--urgent icons" src="images/checkbox.svg" alt="Checkbox for completed tasks">${item.task}`;
     taskListElement.appendChild(listItem);
@@ -186,7 +188,8 @@ function hideLeftDynamics() {
   }
 }
 
-// Function needs to be invoked on page load. Verified to work. Lacks styling, however. Could not figure out how to hide the quotation
+// Function needs to be invoked on page load. Verified to work. Lacks styling, however.
+// Could not figure out how to hide the quotation
 function insertRandomQuotation() {
   var inspiringQuotesArray = [
     "Push yourself, because no one else is going to do it for you.",
@@ -204,3 +207,10 @@ function insertRandomQuotation() {
   jsInspireTask.innerHTML = inspiringQuotesArray[i];
 };
 insertRandomQuotation();
+
+
+function runUpdateToDo(event){
+  console.log(event)
+  console.log(todoListArray)
+    todoListArray[0].updateTask(event);
+  }
