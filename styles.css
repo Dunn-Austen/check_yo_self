@@ -118,6 +118,10 @@ input {
   background-color: #2a2a35;
   color: #bac8d0;
 }
+.js__clear--button:disabled {
+  background-color: #2a2a35;
+  color: #bac8d0;
+}
 .left__item--wrapper {
   display: flex;
   flex-direction: row;
