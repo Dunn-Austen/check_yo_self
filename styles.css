@@ -22,6 +22,7 @@ body {
 header {
   display: grid;
   grid-area: nav;
+  /* two grids */
   background-color: #1e1e3d;
   display: flex;
   flex-direction: row;
@@ -313,3 +314,10 @@ li {
   box-sizing: border-box;
   background: lightgrey;
 }*/
+
+
+.checkoff-task {
+  font-style: italic;
+  color: #3C6577;
+
+}
