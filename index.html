@@ -24,13 +24,13 @@
         <form class="left__main--form">
           <div class="left__input--container">
             <label>Task Title</label>
-            <input class="js__title--input" type="text" id="itemTitle" autocomplete="off" onkeydown="return disableMakeListBtn()">
+            <input class="js__title--input" type="text" id="itemTitle" autocomplete="off" onkeyup="return disableBtns()">
             <ul class="js__task--area">
             </ul>
             <div class="left__taskinput--container">
               <label>Task Item</label>
               <div class="left__item--wrapper">
-              <input class="js__item--input" type="text" id="itemInput" autocomplete="off" onkeyup="return disableBtn()" onkeydown="return disableMakeListBtn()">
+              <input class="js__item--input" type="text" id="itemInput" autocomplete="off" onkeyup="return disableBtns()">
               <button class="js__plus--button" disabled="disabled">+</button>
               </div>
             </div>
@@ -40,7 +40,7 @@
             <button class="js__list--button asidebtn" disabled="disabled">
               Make Task List
             </button>
-            <button class="js__clear--button asidebtn">
+            <button class="js__clear--button asidebtn" disabled="disabled">
               Clear All
             </button>
           </div>
@@ -52,6 +52,7 @@
             </button>
           </div>
       </section>
+<<<<<<< HEAD
 
       <section class="right__main--section">
         <section class="js__card--area">
@@ -71,8 +72,13 @@
           
         </section>
 
+=======
+      <section class="right__main--section">
+        <div class="js__inspire--task"></div>
+        <section class="js__card--area">
+<!-- JS DOM AREA************           -->
+>>>>>>> 7ea66819a1c144017a09cfef0709859924546eec
       </section>
-
       </section>
   </body>
   <script type="text/javascript" src="tasks.js"></script>
