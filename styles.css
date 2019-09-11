@@ -390,7 +390,7 @@ li {
   font-style: italic !important;
 }
 
-.js__task--card--urgent {
+.active-lightning {
   background-color: #ffe79d !important
 }
 
