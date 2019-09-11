@@ -19,6 +19,7 @@ jsListButton.addEventListener('click', finalFunction);
 jsCardArea.addEventListener('click', deleteCard);
 jsCardArea.addEventListener('click', runUpdateToDo)
 clearBtn.addEventListener('click', clear);
+jsCardArea.addEventListener('click', runUrgentToggle);
 // Named function for eventListener
 
 function eventHandlerTopLeft(event) {
@@ -90,7 +91,7 @@ function makeTaskCard(checklist) {
           </div>
         </div>
           <div class="task__card--icon">
-            <img class="js__task--urgent icon" src="images/urgent.svg" alt="Update urgency on card">
+            <img class="js__task--urgent icon active-lightning" src="images/urgent.svg" alt="Update urgency on card">
             <img class="js__task--delete icon" src="images/delete.svg" alt="Delete card">
           </div>
       </section>
@@ -213,4 +214,8 @@ function runUpdateToDo(event){
   console.log(event)
   console.log(todoListArray)
     todoListArray[0].updateTask(event);
+  }
+
+function runUrgentToggle(event) {
+    todoListArray[0].toggleUrgent(event);
   }
