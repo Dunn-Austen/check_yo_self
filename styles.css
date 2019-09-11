@@ -55,6 +55,18 @@ form {
 }
 
 input {
+
+  /*
+  border-color: #1e1e3d;
+  border-radius: 4px;
+  border: 2px solid;
+  font-size: 16px;
+  height: 40px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  padding-left: 8px;
+  width: 96%;*/
+
   border: 2px solid;
   border-color: #1e1e3d;
   border-radius: 4px;
@@ -65,6 +77,7 @@ input {
   margin-top: 10px;
   padding-left: 8px;
   width: 93.5%;
+
 }
 
 /* Header */
@@ -310,6 +323,12 @@ li {
   width: 25px;
 }
 
+.js__task--complete {
+  width: 25px;
+  height: 25px;
+  padding: 0 3%;
+}
+
 .js__task--delete {
   height: 25px;
   padding: 0 3%;
@@ -371,19 +390,6 @@ li {
   height: 100%;
   z-index: 10;
 }
-/*.parent-box {
-  column-count: 3;
-  column-gap: 1em;
-  border: 1px solid red;
-}
-#blocks {
-  display: inline-block;
-  padding: 20px;
-  margin: 0 0 15px;
-  width: auto;
-  box-sizing: border-box;
-  background: lightgrey;
-}*/
 
 .checkoff_task {
   color: #3C6577 !important;

@@ -1,25 +1,32 @@
 // Global Variables
-var sectionLeft = document.querySelector(".left__main--section");
-var jsTitleInput = document.querySelector(".js__title--input");
-var jsItemInput = document.querySelector(".js__item--input");
-var jsPlusButton = document.querySelector(".js__plus--button");
-var jsCardArea = document.querySelector(".js__card--area");
-var jsListButton = document.querySelector(".js__list--button");
-var jstaskArea = document.querySelector(".js__task--area");
 var clearBtn = document.querySelector('.js__clear--button');
 var deleteArray = document.querySelectorAll('.js__dynamic--insert');
+var jsCardArea = document.querySelector(".js__card--area");
+var jsInspireTask = document.querySelector('.js__inspire--task');
+var jsItemInput = document.querySelector(".js__item--input");
+var jsListButton = document.querySelector(".js__list--button");
+var jsPlusButton = document.querySelector(".js__plus--button");
+var jstaskArea = document.querySelector(".js__task--area");
+var jsTitleInput = document.querySelector(".js__title--input");
+var sectionLeft = document.querySelector(".left__main--section");
 var taskContainer = document.querySelector('.task__container');
 var taskItemContainer = document.querySelector('.task__item--container');
-var jsInspireTask = document.querySelector('.js__inspire--task');
+var jsTaskUrgent = document.querySelector('.js__task--urgent');
+var jsTaskComplete = document.querySelector('.js__task--complete');
 var tasksArray = [];
 var todoListArray = [];
 // Event Listener for left section, initiates insertTaskItem function upon click
+
+window.addEventListener("load", reInstantiate);
 sectionLeft.addEventListener('click', eventHandlerTopLeft);
 jsListButton.addEventListener('click', finalFunction);
 jsCardArea.addEventListener('click', deleteCard);
-jsCardArea.addEventListener('click', runUpdateToDo)
 clearBtn.addEventListener('click', clear);
+
+// jsCardArea.addEventListener('click', runUpdateToDo)
+
 // jsCardArea.addEventListener('click', runUrgentToggle);
+
 // Named function for eventListener
 
 function eventHandlerTopLeft(event) {
@@ -36,10 +43,7 @@ function eventHandlerTopLeft(event) {
 // Function for dynamic generation of user Task Item values via new <p> element
 function insertLeftTaskItem() {
   var taskItemValue = document.querySelector(".js__item--input").value;
-  // var newItemLeftSection = document.createElement("ul");
     if (taskItemValue != "") {
-      // document.querySelector(".js__task--area").appendChild(jstasktArea);
-      // newItemLeftSection.classList.add("js__dynamic--insert");
       jstaskArea.insertAdjacentHTML('beforeend',
       `<div class="left__task--container">
          <img class="js__delete--icon" src="images/delete.svg" alt="Delete Icon for removing task item">
@@ -58,10 +62,11 @@ function deleteLeftTaskItem() {
 
 // Function to put tasks on card
 function  newTodoList() {
+  var id = Date.now();
   var title = jsTitleInput.value;
   var task = tasksArray;
   var todoList = new TodoList({
-  id: Date.now(),
+  id: id += 42,
   title: title,
   tasks: task
   })
@@ -71,8 +76,9 @@ console.log(todoList);
 };
 
 function createTasks() {
+  var id = Date.now();
     for (var i = 0; i < jstaskArea.children.length; i++) {
-    var taskList = new Task({id: Date.now(), task: jstaskArea.children[i].innerText});
+    var taskList = new Task({id: id++, task: jstaskArea.children[i].innerText, complete: false});
     tasksArray.push(taskList);
   }
     return tasksArray;
@@ -103,6 +109,8 @@ clear();
 }
 
 function finalFunction(event) {
+  console.log('find todo list')
+  // findTodoList();
   event.preventDefault();
   var tasks = createTasks();
   var checkList = newTodoList(tasks);
@@ -118,16 +126,16 @@ function insertTasks(checklist) {
   var listItem = document.createElement('li');
   // listItem.setAttribute("id", "${item.id}")
   for (var i = 0; i < 1; i++) {
-    listItem.innerHTML = `<img class="js__task--urgent icons" src="images/checkbox.svg" alt="Checkbox for completed tasks">${item.task}`;
+    listItem.innerHTML = `<img class="js__task--complete icons" src="images/checkbox.svg" alt="Checkbox for completed tasks" data-id=${checklist.id}>${item.task}`;
     taskListElement.appendChild(listItem);
     }
   })
 }
 
 function insertTitle(checklist) {
-   var taskCard = document.querySelector(`#task__list--${checklist.id}`);
-   var sectionTextElement = taskCard.querySelector('.task__h3--text');
-   sectionTextElement.innerHTML = `${checklist.title}`;
+  var taskCard = document.querySelector(`#task__list--${checklist.id}`);
+  var sectionTextElement = taskCard.querySelector('.task__h3--text');
+  sectionTextElement.innerHTML = `${checklist.title}`;
 }
 
 function clear() {
@@ -173,11 +181,14 @@ function disableBtns() {
 }
 
 function deleteCard(e){
-  if (e.target.classList.contains("js__task--delete")){
+  if (e.target.classList.contains("js__task--delete")) {
   e.target.parentNode.parentNode.remove();
   todoListArray.pop();
   hideLeftDynamics();
   insertRandomQuotation();
+ } else if (e.target.classList.contains("js__task--complete")) {
+  findCardId(e);
+   e.target.src = "images/checkbox-active.svg";
  }
 }
 
@@ -191,6 +202,7 @@ function hideLeftDynamics() {
 
 // Function needs to be invoked on page load. Verified to work. Lacks styling, however.
 // Could not figure out how to hide the quotation
+
 function insertRandomQuotation() {
   var inspiringQuotesArray = [
     "Push yourself, because no one else is going to do it for you.",
@@ -207,15 +219,30 @@ function insertRandomQuotation() {
   i = Math.floor(Math.random() * 10)
   jsInspireTask.innerHTML = inspiringQuotesArray[i];
 };
+
+function reInstantiate() {
 insertRandomQuotation();
+}
 
+// function updateUrgency(event) {
+//   findCardId(event)
+//   if (event.target.src === "images/checkbox.svg"){
+//     console.log("Get Here?")
+//     event.target.src = "images/checkbox-active.svg";
+//     event.target.parentElement.classList.add('checkoff_task');
+//     } else if (event.target.src === "images/checkbox-active.svg"){
+//       event.target.src = "images/checkbox.svg";
+//       event.target.parentElement.classList.remove("checkoff_task");
+//     } else return
+//   }
 
-function runUpdateToDo(event){
-  console.log(event)
-  console.log(todoListArray)
-    todoListArray[0].updateTask(event);
+  function findCardId(e) {
+    console.log('find id card')
+    var cardID = e.target.closest(".js__task--complete").getAttribute('data-id');
+    console.log(cardID);
   }
 
 // function runUrgentToggle(event) {
 //     todoListArray[0].toggleUrgent(event);
 //   }
+
