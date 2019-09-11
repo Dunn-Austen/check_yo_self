@@ -57,15 +57,15 @@ form {
 }
 
 input {
-  width: 96%;
-  height: 40px;
-  border: 2px solid;
   border-color: #1e1e3d;
   border-radius: 4px;
-  margin-top: 10px;
-  margin-bottom: 20px;
+  border: 2px solid;
   font-size: 16px;
+  height: 40px;
+  margin-bottom: 20px;
+  margin-top: 10px;
   padding-left: 8px;
+  width: 96%;
 }
 /* Header */
 .nav__search--container {
@@ -289,6 +289,12 @@ li {
   padding: 0 3%;
 }
 
+.js__task--complete {
+  width: 25px;
+  height: 25px;
+  padding: 0 3%;
+}
+
 .js__task--delete {
   width: 25px;
   height: 25px;
@@ -350,19 +356,6 @@ li {
   height: 100%;
   z-index: 10;
 }
-/*.parent-box {
-  column-count: 3;
-  column-gap: 1em;
-  border: 1px solid red;
-}
-#blocks {
-  display: inline-block;
-  padding: 20px;
-  margin: 0 0 15px;
-  width: auto;
-  box-sizing: border-box;
-  background: lightgrey;
-}*/
 
 .checkoff_task {
   font-style: italic !important;
