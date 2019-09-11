@@ -11,9 +11,9 @@ body {
   "task main main"
   "task main main";
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 9% 45% 45%;
+  grid-template-rows: 10% 45% 45%;
   margin: 0 auto;
-  width: 60%;
+  width: 80%;
 }
 
 header {
@@ -182,6 +182,7 @@ input {
   display: flex;
   flex-direction: column;
   align-items: center;
+  height:
   margin-bottom: -40px;
   margin-top: -25px;
 }
@@ -190,8 +191,7 @@ input {
   border-top: 2px solid;
   border-color: #426a7c;
   height: 7px;
-  margin-left: -2px;
-  margin-top: -20px;
+  margin-top: -40px;
   width: 100%;
 }
 
@@ -395,12 +395,13 @@ li {
 }
 
 @media only screen and (max-width: 1150px) {
+
   body {
     display: grid;
     height: 170vh;
     margin: 0;
     grid-template-columns: 1fr;
-    grid-template-rows: .55fr 1.8fr 2fr;
+    grid-template-rows: .70fr 1.8fr 2fr;
     grid-template-areas:
     "nav"
     "task"
@@ -411,18 +412,19 @@ li {
   header {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: space-around;
     width: 70%;
   }
 
   h1 {
     font-size: 42px;
-    margin-top: -13px;
-    margin-bottom: 23px;
+    margin-bottom: 15px;
   }
 
   .nav__search--container{
-    height: 33px;
+    height: 60px;
+    margin-top: -20px;
     width: 94%;
   }
 
@@ -435,14 +437,14 @@ li {
     height: 55px;
   }
 
-/* Media @ left section */
+  /* Media @ left section */
   .left__main--section {
     width: 70%;
   }
 
   label {
-    letter-spacing: 1px;
     font-size: 18px;
+    letter-spacing: 1px;
     margin-bottom: 1px;
   }
 
@@ -455,8 +457,8 @@ li {
   }
 
   .left__input--container {
-    margin-top: 5px;
     margin-bottom: 10px;
+    margin-top: 5px;
   }
 
   .left__taskinput--container {
@@ -497,5 +499,29 @@ li {
 
   .right__main--container {
     width: 70%;
+  }
+}
+
+@media only screen and (max-width: 945px) {
+
+    /* Media @ header  */
+    header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 70%;
+    }
+
+  h1 {
+    font-size: 42px;
+    margin-top: 10px;
+    margin-bottom: -23px;
+    text-align: center;
+  }
+
+  .nav__search--container{
+    height: 50px;
+    margin-top: -35px;
+    width: 94%;
   }
 }
