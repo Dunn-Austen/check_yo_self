@@ -22,7 +22,11 @@ sectionLeft.addEventListener('click', eventHandlerTopLeft);
 jsListButton.addEventListener('click', finalFunction);
 jsCardArea.addEventListener('click', deleteCard);
 clearBtn.addEventListener('click', clear);
+
 // jsCardArea.addEventListener('click', runUpdateToDo)
+
+// jsCardArea.addEventListener('click', runUrgentToggle);
+
 // Named function for eventListener
 
 function eventHandlerTopLeft(event) {
@@ -93,7 +97,7 @@ function makeTaskCard(checklist) {
           </div>
         </div>
           <div class="task__card--icon">
-            <img class="js__task--urgent icon" src="images/urgent.svg" alt="Update urgency on card">
+            <img class="js__task--urgent icon bolt" src="images/urgent.svg" alt="Update urgency on card">
             <img class="js__task--delete icon" src="images/delete.svg" alt="Delete card">
           </div>
       </section>
@@ -238,5 +242,7 @@ insertRandomQuotation();
     console.log(cardID);
   }
 
-
+// function runUrgentToggle(event) {
+//     todoListArray[0].toggleUrgent(event);
+//   }
 
