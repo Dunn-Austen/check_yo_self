@@ -13,15 +13,13 @@ class Task {
 
     }
 
-// (should update the to-do’s title and urgency
-		updateToDo() {
+	updateToDo() {
 
-		} 
+	} 
 
-// (should update a task’s content and if it has been completed)
-		updateTask() {
+	updateTask() {
 
-		}
+	}
 
 
 }
