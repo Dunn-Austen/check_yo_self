@@ -28,10 +28,9 @@ clearBtn.addEventListener('click', clear);
 // jsCardArea.addEventListener('click', runUrgentToggle);
 
 // Named function for eventListener
-
 function eventHandlerTopLeft(event) {
   event.preventDefault();
-  if (event.target.classList.contains("js__plus--button")) {
+  if (event.target.classList.contains("js__plus--button") || event.target.classList.contains("js__plus--img")) {
     insertLeftTaskItem();
   }
   if (event.target.classList.contains("js__delete--icon")) {
@@ -200,9 +199,7 @@ function hideLeftDynamics() {
   }
 }
 
-// Function needs to be invoked on page load. Verified to work. Lacks styling, however.
-// Could not figure out how to hide the quotation
-
+// Function for generating inspiring quotation on page
 function insertRandomQuotation() {
   var inspiringQuotesArray = [
     "Push yourself, because no one else is going to do it for you.",
@@ -245,4 +242,3 @@ insertRandomQuotation();
 // function runUrgentToggle(event) {
 //     todoListArray[0].toggleUrgent(event);
 //   }
-
